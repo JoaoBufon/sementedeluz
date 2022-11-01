@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{% static "/css/add_estoque.css" %}'>
+    <script src="https://kit.fontawesome.com/cd2bf27834.js" crossorigin="anonymous"></script>
+    <title>higiene</title>
+</head>
+<body>
+<header>
+<div class="logo">
+    Semente de <span>Luz</span></div>
+<ul>
+    <li>Home</li><!--página inicial-->
+    <li>Cadastros</li><!--Banco de dados-->
+    <li>Sobre</li><!--Explicando sobre a ong-->
+    <li>Ajuda</li> <!--video yt-->
+</ul>
+</header>
+
+<br>
+
+<body>
+    <h1>Formulário para Higiene</h1>
+
+    <form>
+        <div class="card">
+            <div class="textfield">
+                <select class="select">
+                    <option selected disabled>Selecione</option>
+                    <option>Limpeza</option>
+                    <option>Higiene Bucal</option>
+                    <option>Higiene Pessoal</option>
+                </select>
+
+                <br>
+
+                <label for="tipo"><i class="fa-solid fa-comment"></i> Expecificação: </label>
+                <input type="text" name="tipo" placeholder="Expecifique ou Outros">
+            </div>
+
+            <div class="textfield">
+                <label for="quantidade"><i class="fa-solid fa-weight-scale"></i> Quantidade: </label>
+                <input type="text" name="quantidade" placeholder="Quantidade">
+            </div>
+
+            <div class="textfield">
+                <label for="vencimento"><i class="fa-solid fa-calendar-days"></i> Vencimento: </label>
+                <input type="date" name="vencimento" placeholder="Data de vencimento / Não possui vencimento">
+            </div>
+
+            <button class="btn" type="submit">salvar</button>
+        </div>
+    </form>
+</body>
+
+<footer>
+    <div class="footer-content">
+        <h3>Semente de Luz</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam debitis recusandae fugiat commodi omnis assumenda hic unde eius quidem, sunt aliquid officia voluptas odio veritatis sequi, iusto perferendis maiores obcaecati.</p>
+        <ul class="socials">
+            <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-google"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2022 Cetec. designed by <span>Arthur João and Gustavo</span></p>
+    </div>
+</footer>
+
+</html>

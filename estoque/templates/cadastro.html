@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{% static "/css/cadastro.css" %}'>
+    <script src="https://kit.fontawesome.com/cd2bf27834.js" crossorigin="anonymous"></script>
+    <title>cadastro</title>
+</head>
+<body>
+    <div class="titulo"><h1>Cadastrar-se</h1></div>
+    <form action="{% url 'home'%}" method="POST" id="form" class="form"> {% csrf_token %}
+    <div class="painel"><!--form-control-->
+        <div class="textfield">
+            <label for="nome"><i class="fa-solid fa-user"></i>     Nome</label>
+            <input type="text" name="nome" placeholder="Nome">
+        </div>
+
+        <div class="textfield">
+            <label for="sobrenome"><i class="fa-solid fa-user"></i>     Sobrenome</label>
+            <input type="text" name="sobrenome" placeholder="Sobrenome">
+        </div>
+
+        <div class="textfield">
+            <label for="e-mail"><i class="fa-solid fa-envelope"></i>     E-mail</label>
+            <input type="email" name="e-mail" placeholder="E-mail">   
+        </div>
+        
+        <div class="textfield">
+            <label for="telefone"><i class="fa-solid fa-phone"></i>     Telefone</label>
+            <input type="tel" name="telefone" placeholder="Telefone">   
+        </div>
+
+        <div class="textfield">
+            <label for="senha"><i class="fa-solid fa-lock"></i>     Senha</label>
+            <input type="password" name="senha" placeholder="Senha">
+
+         </div>
+
+        <div class="textfield">
+            <label for="confirmar"><i class="fa-solid fa-lock"></i>     Confirmar Senha</label>
+            <input type="password" name="c-senha" placeholder="Confirmar Senha">
+
+        </div>
+
+        <button class="botao" type="submit">Cadastrar </button>
+        </div>     
+    </div>
+</form>
+</div>
+</body>
+</html>
