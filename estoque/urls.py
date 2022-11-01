@@ -6,6 +6,7 @@ from django import views
 from . import views
 from django.contrib.auth import views as auth_views
 from estoque.views import CadastroView, AddHigieneView, AddAlimentoView, AddFuncionarioView, AddIntegranteView, AddRoupaCamaView, AddRoupaView, VerAlimentoView, VerFuncionarioView, VerHigieneView, VerIntegranteView, VerRoupaCamaView, VerRoupaView
+from django.contrib.auth.decorators import login_required
 
 app_name = 'estoque'
 urlpatterns = [
@@ -23,7 +24,7 @@ urlpatterns = [
     path ('opcao/', TemplateView.as_view (template_name ='opcao_ver_estoque.html '), name='opcao'),
     path ('opcaoestoque/', TemplateView.as_view (template_name ='opcao_estoque.html '), name='opcaoestoque'),
     
-    path ('escolha/', TemplateView.as_view (template_name ='escolha.html '), name='escolha'),
+    path ('escolha/', login_required (TemplateView.as_view (template_name ='escolha.html ')), name='escolha'),
     
     path ('addalimento/', AddAlimentoView.as_view (), name='addalimento'),
     path ('addhigiene/', AddHigieneView.as_view(), name='addhigiene'),

@@ -13,10 +13,14 @@
     <div class="logo">
         Semente de <span>Luz</span></div>
     <ul>
-        <li>Home</li><!--página inicial-->
-        <li>Cadastros</li><!--Banco de dados-->
-        <li>Sobre</li><!--Explicando sobre a ong-->
-        <li>Ajuda</li> <!--video yt-->
+        <li><a href="{%url 'home' %}">Home</li></a><!--página inicial-->
+        <li><a href="/estoque/escolha">Banco de Dados</li></a><!--Banco de dados-->
+        <li><a href="/estoque/language/"> Idioma</li></a><!--Explicando sobre a ong-->
+        <li>
+            {% block content %}
+            <a href = "{%url 'login' %}">Sair. </a>
+            {% endblock %}
+        </li> <!--video yt-->
     </ul>
 </header>
 
@@ -24,50 +28,20 @@
 
     <body>
         <h1>Formulário para Roupas</h1>
-        <div class="card">
-
-            <div class="textfield">
-                <select class="select">
-                    <option selected disabled>Selecione</option>
-                    <option>Calçado</option>
-                    <option>Camiseta</option>
-                    <option>Calça</option>
-                    <option>Acessório</option>
-                </select>
-
-                <br>
-
-                <label for="cor"><i class="fa-solid fa-palette"></i> Cor: </label>
-                <input type="text" name="cor" placeholder="Cor da peça">
+        <form method="POST" id="form" class="form"> {% csrf_token %}>
+            <div class="card">
+    
+                {% for field in form %}
+    
+                <div class="textfield">
+                    <label for="nome"><i class="fa-solid fa-user"></i>{{ field.label_tag }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+    
+                <button class="btn" type="submit">salvar</button>
             </div>
-
-            <div class="textfield">
-                <label for="quantidade"><i class="fa-solid fa-weight-scale"></i> Quantidade: </label>
-                <input type="text" name="quantidade" placeholder="Quantidade">
-            </div>
-
-            <div class="textfield">
-                <label for="tamanho"><i class="fa-solid fa-list-ol"></i> Tamanho: </label>
-                <input type="text" name="tamanho" placeholder="P / M / G / GG">
-            </div>
-
-            <div class="formulario">
-                <form class="nmr">
-                    <label for="Qualidade"><span><i class="fa-solid fa-list-ol"></i> Qualidade: </span> </label>
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op1"> 1
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op2"> 2 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op3"> 3 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op4"> 4 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op5"> 5 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op6"> 6 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op7"> 7 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op8"> 8 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op9"> 9 
-                    <input class="formulario" TYPE="RADIO" NAME="OPCAO" VALUE="op10"> 10
-                </form>
-            </div>
-            <button class="btn" type="submit">salvar</button>
-        </div>
+        </form>
     </body>
 
     <footer>

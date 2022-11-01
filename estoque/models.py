@@ -1,6 +1,7 @@
 from random import choices
 from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,21 +12,21 @@ HIGIENE_CHOICES = (
         ('Papel Higiênico', 'Papel Higiênico'),
     )
 ROUPA_CHOICES = (
-        ('1', 'Calça'),
-        ('2', 'Casaco'),
-        ('3', 'Camiseta'),
-        ('4', 'Camisa'),
+        ('Calça', 'Calça'),
+        ('Casaco', 'Casaco'),
+        ('Camiseta', 'Camiseta'),
+        ('Camisa', 'Camisa'),
     )
 ALIMENTO_CHOICES = (
-        ('1', 'Carboidrato'),
-        ('2', 'sei la'),
-        ('3', 'Pasta de dentes'),
-        ('4', 'Papel Higiênico'),
+        ('Carboidrato', 'Carboidrato'),
+        ('Leite', 'Leite'),
+        ('Oléo', 'Oléo'),
+        ('Acucar', 'Acucar'),
     )
 ROUPACAMA_CHOICES = (
-        ('1', 'Lençol'),
-        ('2', 'Cobertor'),
-        ('3', 'Fronha'),
+        ('Lençol', 'Lençol'),
+        ('Cobertor', 'Cobertor'),
+        ('Fronha', 'Fronha'),
         ('4', 'sei la'),
     )
 TAMANHOROUPACAMA_CHOICES = (
@@ -41,24 +42,25 @@ TAMANHOROUPA_CHOICES = (
         ('GG', 'GG'),
     )
 CONDICAO_CHOICES = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-        ('6', '6'),
-        ('7', '7'),
-        ('8', '8'),
-        ('9', '9'),
-        ('10', '10'),
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+        (6, 6),
+        (7, 7),
+        (8, 8),
+        (9, 9),
+        (10, 10),
     )
-
 SEXO_CHOICES = (
     ('Feminino', 'Feminino'),
     ('Masculino', 'Masculino'),
 )
 
+
 class Cadastro(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     nome=models.CharField(max_length = 100, null=True)
     sobrenome=models.CharField(max_length = 100, null=True)
     email=models.EmailField(null=True)

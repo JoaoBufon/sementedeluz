@@ -17,19 +17,20 @@
             <img src={% static "img/logo.png" %} alt="" class="img">
             </div>
         </div>
-
+        
         <div class="right-login"></div>
-        <form id="form" class="form">
+        <form id="form" class="form" method="post" action ="{% url 'login' %}">
+            {% csrf_token %}
             <div class="card-login">
                 <h1>LOGIN</h1>
                 <div class="textfield">
-                    <label for="usuario"><p class="fa-solid fa-user"></p>     Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuario">
+                    <label for="usuario">Usuário: {{form.username.labeltag}}</label>
+                    {{form.username}}
                 </div>
                 
                 <div class="textfield">
-                    <label for="senha"><p class="fa-solid fa-lock"></p>     Senha</label>
-                    <input type="password" name="senha" placeholder="Senha">
+                    <label for="senha">{{ form.password.label_tag }}</label>
+                    {{ form.password }}
                     
                 </div>
                 <button class="btn-login" type="submit">Login</button>
@@ -38,6 +39,7 @@
             </div> 
         </form>
         </div>
+        
     </div>
 
     
