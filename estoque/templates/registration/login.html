@@ -24,13 +24,13 @@
             <div class="card-login">
                 <h1>LOGIN</h1>
                 <div class="textfield">
-                    <label for="usuario">Usuário: {{form.username.labeltag}}</label>
-                    {{form.username}}
+                    <label for="usuario"> <p class="fa-solid fa-user"></p> {{form.username.label_tag}}</label>
+                    <input placeholder="Usuário" {{form.username}} 
                 </div>
                 
                 <div class="textfield">
-                    <label for="senha">{{ form.password.label_tag }}</label>
-                    {{ form.password }}
+                    <label for="senha"> <p class="fa-solid fa-lock"></p> {{ form.password.label_tag }}</label>
+                    <input placeholder="Senha" {{ form.password }} 
                     
                 </div>
                 <button class="btn-login" type="submit">Login</button>

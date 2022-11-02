@@ -20,26 +20,34 @@
 
                 <div class="textfield">
                     <label for="nome"><i class="fa-solid fa-user"></i>     {{form.first_name.label}}</label>
-                    <input type="text" name="Nome" {{form.first_name}}>
+                    {{form.first_name}}
                 </div>
         
+                <div class="textfield">
+                    <label for="sobrenome"><i class="fa-solid fa-user"></i>     {{form.last_name.label}}</label>
+                    {{form.last_name}}
+                </div>
+
+                <div class="textfield">
+                    <label for="username"><i class="fa-solid fa-user"></i>     {{form.username.label}}</label>
+                    {{form.username}}
+                </div>
                 
-                {{form.last_name.label}}
-                {{form.last_name}}
+                <div class="textfield">
+                    <label for="email"><i class="fa-solid fa-envelope"></i>     {{form.email.label}}</label>
+                    {{form.email}}
+                </div>
 
-                {{form.username.label}}
-                {{form.username}}
+                <div class="textfield">
+                    <label for="senha"><i class="fa-solid fa-lock"></i>     {{form.password1.label}}</label>
+                    {{form.password1}}
+                </div>
 
-                {{form.email.label}}
-                {{form.email}}
+                <div class="textfield">
+                    <label for="senha"><i class="fa-solid fa-lock"></i>    {{form.password2.label}}</label>
+                    {{form.password2}}
+                </div>
 
-                {{form.password1.label}}
-                {{form.password1}}
-
-                {{form.password2.label}}
-                {{form.password2}}
-
-                
 
                 <input class="botao" type="submit">
                 {{ form.errors }}
