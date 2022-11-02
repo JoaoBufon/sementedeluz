@@ -10,22 +10,31 @@
     <title>cadastro</title>
 </head>
 <body>
+
+
     <div class="titulo"><h1>Cadastrar-se</h1></div>
-    <form action="estoque/cadastro" method="POST" id="form" class="form"> {% csrf_token %}
-    <div class="painel"><!--form-control-->
 
-        {% for field in form %}
+        <form method="POST" action="" id="form" class="form"> 
+            {% csrf_token %}
+            <div class="painel">
 
-        <div class="textfield">
-            <label for="nome"><i class="fa-solid fa-user"></i>{{ field.label_tag }}</label>
-            {{ field }}
-        </div>
-        {% endfor %}
+                {{form.username.label}}
+                {{form.username}}
 
-        <button class="botao" type="submit">Cadastrar </button>
-        </div>     
+                {{form.email.label}}
+                {{form.email}}
+
+                {{form.password1.label}}
+                {{form.password1}}
+
+                {{form.password2.label}}
+                {{form.password2}}
+
+                <input class="botao" type="submit">
+                {{ form.errors }}
+            </div>     
+        </form>
     </div>
-</form>
-</div>
+
 </body>
 </html>

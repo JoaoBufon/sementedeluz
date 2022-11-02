@@ -1,34 +1,60 @@
 #from msilib.schema import ListView
 from turtle import home
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from estoque.models import Cadastro, Funcionario
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
-from estoque.forms import ContactForm
 from estoque.models import Alimento, Higiene, Integrante, Roupa, Roupacama, Integrante, Funcionario
 from django.urls import reverse_lazy
-    
-class CadastroView(CreateView):
-    model = Cadastro
-    fields = '__all__'
-    template_name = 'cadastro.html'
-    success_url = reverse_lazy('home')
-    
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-    
+from django.contrib.auth.forms import UserCreationForm
+from estoque.forms import CreateUserForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
-'''
-class loginView(FormView):
-    model = Login
-    template_name = 'login.html'
+ 
+
+ 
+def CadastroView(request):
+    if request.user.is_authenticated:
+        return redirect ('home')
+    else:
+        form = CreateUserForm()
+
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Usuário criado com sucesso: ' + user)
+                return redirect('login')
+        
+        context = {'form' : form}
+        return render (request, 'cadastro.html', context)
     
-class homeView(FormView):
-    model = Home
-    template_name = 'home.html'
-'''
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect ('home')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            
+            user = authenticate(request, username= username, password=password)
+            
+            if user is not None:
+                login(request, username)
+                return redirect('home')
+            else:
+                messages.info(request, 'O usuário ou a senha está incorreto')
+                    
+        context = {}
+        return render(request, 'accounts/login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
 class AddRoupaView(CreateView): 
     model = Roupa
     fields = ['tipos', 'cor', 'qntd', 'tamanho', 'condicao']
