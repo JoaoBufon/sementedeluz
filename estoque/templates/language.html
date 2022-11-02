@@ -14,7 +14,10 @@
         <div class="esquerda">
             <h1>Bem-Vindo</h1><br>
         </div>
-        <div >
+
+        <form action ="/" method="get" id="form" class="form"> {% csrf_token %}
+        <div>
+            
             <select class="menu" id="Idioma" required>
                 <option selected disabled value="">Selecione</option>
                 <option>Português</option>
@@ -22,6 +25,7 @@
                 <option disabled value="">Español (desarrollo)</option>
             </select>
         </div>
+        <button class="btn" type="submit">ok</button>
     </div>
     <footer>
         <div class="footer-content">

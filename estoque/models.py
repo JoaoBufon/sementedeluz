@@ -2,6 +2,8 @@ from random import choices
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+
 
 # Create your models here.
 
@@ -60,6 +62,7 @@ SEXO_CHOICES = (
 
 
 class Cadastro(models.Model):
+    
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     nome=models.CharField(max_length = 100, null=True)
     sobrenome=models.CharField(max_length = 100, null=True)
@@ -69,8 +72,7 @@ class Cadastro(models.Model):
     
     def __str__(self):
         return self.nome
- 
-
+    
 class Integrante(models.Model):
     nome=models.CharField(max_length = 100, null=True)
     email=models.EmailField(null=True)
