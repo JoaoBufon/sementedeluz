@@ -41,6 +41,8 @@ urlpatterns = [
     path ('verroupa/', login_required (VerRoupaView.as_view ()), name='verroupa'),
     path ('verintegrante/', login_required (VerIntegranteView.as_view ()), name='verintegrante'),
     
+    
+    path ('perfil/', login_required (TemplateView.as_view (template_name ='perfil.html ')), name='perfil'),
     #path('higiene/<int:pk>', )
     
     # nova url path ('/home', view),

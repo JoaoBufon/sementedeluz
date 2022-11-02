@@ -5,7 +5,7 @@ from estoque.models import Cadastro, Funcionario
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
-from estoque.models import Alimento, Higiene, Integrante, Roupa, Roupacama, Integrante, Funcionario
+from estoque.models import Alimento, Higiene, Integrante, Roupa, Roupacama, Integrante, Funcionario, Cadastro
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from estoque.forms import CreateUserForm
@@ -24,9 +24,11 @@ def CadastroView(request):
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
             if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Usuário criado com sucesso: ' + user)
+                user = form.save()
+                username = form.cleaned_data.get('username')
+                
+                Cadastro.objects.create(usuario=user,)
+                messages.success(request, 'Usuário criado com sucesso: ' + username)
                 return redirect('login')
         
         context = {'form' : form}
@@ -54,6 +56,12 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def userPage(request):
+    orders = request.user.order_set.all()
+    print('ORDERS: ', orders)
+    context = {'orders': orders}
+    return render(request, 'estoque/perfil.html',context)
 
 class AddRoupaView(CreateView): 
     model = Roupa

@@ -68,7 +68,6 @@ class Cadastro(models.Model):
     sobrenome=models.CharField(max_length = 100, null=True)
     email=models.EmailField(null=True)
     telefone = models.CharField(max_length = 12, null=True)
-    senha = models.CharField(max_length = 30, null=True)
     
     def __str__(self):
         return self.nome
