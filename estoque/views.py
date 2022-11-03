@@ -36,7 +36,7 @@ def CadastroView(request):
     
 def loginPage(request):
     if request.user.is_authenticated:
-        return redirect ('home')
+        return redirect ('escolha')
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
