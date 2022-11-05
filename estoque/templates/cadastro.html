@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="textfield">
-                    <label for="username"><i class="fa-solid fa-user"></i>     {{form.username.label}}</label>
+                    <label for="username"><i class="fa-regular fa-user"></i>    {{form.username.label}}</label>
                     {{form.username}}
                 </div>
                 
@@ -48,10 +48,11 @@
                     {{form.password2}}
                 </div>
 
-
                 <input class="botao" type="submit">
 
-                {{ form.errors }} <!--mensangem erro-->
+                <div class="msg">
+                    <p>{{ form.errors }}</p>
+                </div> <!--mensangem erro-->
 
             </div>     
         </form>

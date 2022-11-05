@@ -33,13 +33,15 @@ header > ul{
      display: flex;
      margin: 23px;
      font-size: 18px;
+     list-style: none;
 }
 
-header > ul > li{
+header > ul > li > a{
       color: #F49F1C;
       list-style-type: none;
       cursor: pointer;
       padding-left: 2rem;
+      text-decoration: none;
 }
 
 h1{
@@ -49,7 +51,7 @@ h1{
 .card{
     background-color: #3a556e;
     border-radius: 10px;
-    width: 60%;
+    width: 80%;
     padding: 20px;
     margin: auto;
     margin-bottom: 100px;
