@@ -5,26 +5,26 @@ from django.urls import include, path, URLPattern
 from django import views
 from . import views
 from django.contrib.auth import views as auth_views
-from estoque.views import logoutUser, loginPage, CadastroView, AddHigieneView, AddAlimentoView, AddFuncionarioView, AddIntegranteView, AddRoupaCamaView, AddRoupaView, VerAlimentoView, VerFuncionarioView, VerHigieneView, VerIntegranteView, VerRoupaCamaView, VerRoupaView
+from estoque.views import EscolhaView, OpcaoEstoqueView, OpcaoView, CategoriasCadastroView, OpcaoPessoasView, OpcaoVerEstoqueView, OpcaoVerCadastroView, EstoqueCategoriasView, OpcaoCadastroView,LanguageView, logoutUser, loginPage, CadastroView, AddHigieneView, AddAlimentoView, AddFuncionarioView, AddIntegranteView, AddRoupaCamaView, AddRoupaView, VerAlimentoView, VerFuncionarioView, VerHigieneView, VerIntegranteView, VerRoupaCamaView, VerRoupaView
 from django.contrib.auth.decorators import login_required
 
 app_name = 'estoque'
 urlpatterns = [
-    path ('language/', TemplateView.as_view (template_name ='language.html ')),
+    path ('language/', LanguageView.as_view(), name='language'),
     path ('login/', views.loginPage, name='login'),
     path ('cadastro/', views.CadastroView, name='cadastro'),
     path ('logout/', views.logoutUser, name='logout'),
     
-    path ('opcaocadastro/', login_required (TemplateView.as_view (template_name ='opcao-cadastro.html ')), name='opcaocadastro'),
-    path ('estoquecategorias/', login_required (TemplateView.as_view (template_name ='estoque_categorias.html ')),name='estoquecategorias'),
-    path ('opcaovercadastro/', login_required (TemplateView.as_view (template_name ='opcao_ver_cadastro.html ')), name='opcaovercadastro'),
-    path ('opcaoverestoque/', login_required (TemplateView.as_view (template_name ='opcao_ver_estoque.html ')), name='opcaoverestoque'),
-    path ('opcaopessoas/', login_required (TemplateView.as_view (template_name ='cadastro_pessoas.html ')), name='opcaopessoas'),
-    path ('categoriascadastro/', login_required (TemplateView.as_view (template_name ='categorias_cadastro.html ')), name='categoriascadastro'),
-    path ('opcao/', login_required (TemplateView.as_view (template_name ='opcao_ver_estoque.html ')), name='opcao'),
-    path ('opcaoestoque/', login_required (TemplateView.as_view (template_name ='opcao_estoque.html ')), name='opcaoestoque'),
+    path ('opcaocadastro/', login_required (OpcaoCadastroView.as_view ()), name='opcaocadastro'),
+    path ('estoquecategorias/', login_required (EstoqueCategoriasView.as_view ()),name='estoquecategorias'),
+    path ('opcaovercadastro/', login_required (OpcaoVerCadastroView.as_view ()), name='opcaovercadastro'),
+    path ('opcaoverestoque/', login_required (OpcaoVerEstoqueView.as_view ()), name='opcaoverestoque'),
+    path ('opcaopessoas/', login_required (OpcaoPessoasView.as_view ()), name='opcaopessoas'),
+    path ('categoriascadastro/', login_required (CategoriasCadastroView.as_view ()), name='categoriascadastro'),
+    path ('opcao/', login_required (OpcaoView.as_view ()), name='opcao'),
+    path ('opcaoestoque/', login_required (OpcaoEstoqueView.as_view ()), name='opcaoestoque'),
     
-    path ('escolha/', login_required (TemplateView.as_view (template_name ='escolha.html ')), name='escolha'),
+    path ('escolha/', login_required (EscolhaView.as_view ()), name='escolha'),
     
     path ('addalimento/', login_required (AddAlimentoView.as_view ()), name='addalimento'),
     path ('addhigiene/', login_required (AddHigieneView.as_view()), name='addhigiene'),

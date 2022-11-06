@@ -11,9 +11,39 @@ from django.contrib.auth.forms import UserCreationForm
 from estoque.forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic.base import TemplateView
 
  
+class LanguageView(TemplateView):
+    template_name ='language.html'
 
+class OpcaoCadastroView(TemplateView):
+    template_name ='opcao-cadastro.html'
+    
+class EstoqueCategoriasView(TemplateView):
+    template_name ='language.html'
+
+class OpcaoVerCadastroView(TemplateView):
+    template_name ='opcao_ver_cadastro.html'
+
+class OpcaoVerEstoqueView(TemplateView):
+    template_name ='opcao_ver_estoque.html'
+ 
+class OpcaoPessoasView(TemplateView):
+    template_name ='cadastro_pessoas.html'   
+
+class CategoriasCadastroView(TemplateView):
+    template_name ='categorias_cadastro.html'
+
+class OpcaoView(TemplateView):
+    template_name ='opcao_ver_estoque.html' 
+    
+class OpcaoEstoqueView(TemplateView):
+    template_name ='opcao_estoque.html'
+
+class EscolhaView(TemplateView):
+    template_name ='escolha.html'
+    
  
 def CadastroView(request):
     if request.user.is_authenticated:
